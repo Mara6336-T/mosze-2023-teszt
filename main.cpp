@@ -4,24 +4,24 @@ constexpr int N_ELEMENTS = 100;
 
 int main()
 {
-    int *b = new int[NELEMENTS]; //hibás elnevezés N_ELEMENTS
-    std::cout << '1-100 ertekek duplazasa' //pontosvessző hiánya, idézőjel helyetti hasnálata : '
-    for (int i = 0;)//hiányos feltétel, inkreventálás
+    int *b = new int[N_ELEMENTS]; 
+    std::cout << "1-100 ertekek duplazasa"<< std::endl;
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        b[i] = i * 2;//rossz képlet használata (i + 1) * 2
+        b[i] = (i + 1) * 2;
     }
-    for (int i = 0; i; i++)//hibás feltétel
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        std::cout << "Ertek:"//nincs pontosvessző
+        std::cout << "Ertek: " << b[i] << std::endl;
     }    
     std::cout << "Atlag szamitasa: " << std::endl;
-    int atlag;//kezdőérték hiányzik
-    for (int i = 0; i < N_ELEMENTS, i++)//hibás ciklus meghatározás
+    int atlag=0;
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        atlag += b[i]//pontosvessző hiányzik
+        atlag += b[i];
     }
     atlag /= N_ELEMENTS;
     std::cout << "Atlag: " << atlag << std::endl;
+    delete[] b;
     return 0;
-    //nincs delete-->memóriaszivárgás
 }
